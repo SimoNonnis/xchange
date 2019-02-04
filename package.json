@@ -1,5 +1,31 @@
 {
   "name": "xchange",
+  "version": "1.0.0",
+  "description": "Exchange rate between pockets",
+  "keywords": [
+    "react",
+    "redux",
+    "redux-thunk",
+  ],
+  "homepage": "https://github.com/SimoNonnis/xchange#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SimoNonnis/xchange.git"
+  },
+  "bugs": {
+    "url": "https://github.com/SimoNonnis/xchange/issues"
+  },
+  "license": "MIT",
+  "author": "Simon Nonnis <simon.nonnis@protonmail.com>",
+  "main": "./src/index.js",
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ],
+  "private": true,
+
   "scripts": {
     "deploy": "now && now alias",
     "start": "react-scripts start",
@@ -25,18 +51,4 @@
     "sanitize.css": "7.0.3",
     "serve": "10.1.1"
   },
-  "description": "Exchange rate between pockets",
-  "version": "1.0.0",
-  "main": "./src/index.js",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/SimoNonnis/xchange.git"
-  },
-  "keywords": [],
-  "author": "Simon Nonnis",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/SimoNonnis/xchange/issues"
-  },
-  "homepage": "https://github.com/SimoNonnis/xchange#readme"
 }
