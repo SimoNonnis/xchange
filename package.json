@@ -1,6 +1,5 @@
 {
-  "private": true,
-  "homepage": "https://create-react-app-redux.now.sh",
+  "name": "xchange",
   "scripts": {
     "deploy": "now && now alias",
     "start": "react-scripts start",
@@ -25,5 +24,19 @@
     "redux-thunk": "2.3.0",
     "sanitize.css": "7.0.3",
     "serve": "10.1.1"
-  }
+  },
+  "description": "Exchange rate between pockets",
+  "version": "1.0.0",
+  "main": "./src/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SimoNonnis/xchange.git"
+  },
+  "keywords": [],
+  "author": "Simon Nonnis",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/SimoNonnis/xchange/issues"
+  },
+  "homepage": "https://github.com/SimoNonnis/xchange#readme"
 }
