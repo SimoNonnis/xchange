@@ -30,10 +30,7 @@ const Home = props => (
     </p>
 
     <div>
-      <button onClick={() => props.exchangePage()}>
-        Exchange page via redux
-      </button>
-      <button onClick={() => props.ratesPage()}>Rates page via redux</button>
+      <button onClick={() => props.exchangePage()}>Exchange</button>
     </div>
   </div>
 );
@@ -51,8 +48,7 @@ const mapDispatchToProps = dispatch =>
       incrementAsync,
       decrement,
       decrementAsync,
-      exchangePage: () => push('/exchange'),
-      ratesPage: () => push('/rates')
+      exchangePage: () => push('/exchange')
     },
     dispatch
   );
