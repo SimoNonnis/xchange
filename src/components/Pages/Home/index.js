@@ -12,7 +12,7 @@ import {
 
 const Home = props => (
   <div>
-    <h1>Home</h1>
+    <h1>Pockets</h1>
     <p>Count: {props.count}</p>
 
     <p>
@@ -29,11 +29,12 @@ const Home = props => (
       </button>
     </p>
 
-    <p>
-      <button onClick={() => props.changePage()}>
-        Go to about page via redux
+    <div>
+      <button onClick={() => props.exchangePage()}>
+        Exchange page via redux
       </button>
-    </p>
+      <button onClick={() => props.ratesPage()}>Rates page via redux</button>
+    </div>
   </div>
 );
 
@@ -50,7 +51,8 @@ const mapDispatchToProps = dispatch =>
       incrementAsync,
       decrement,
       decrementAsync,
-      changePage: () => push('/about-us')
+      exchangePage: () => push('/exchange'),
+      ratesPage: () => push('/rates')
     },
     dispatch
   );

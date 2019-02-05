@@ -2,18 +2,21 @@ import React from 'react';
 import { Route, Link } from 'react-router-dom';
 
 import Home from '../Pages/Home';
-import About from '../Pages/About';
+import Exchange from '../Pages/Exchange';
+import Rates from '../Pages/Rates';
 
 const App = () => (
   <div>
     <header>
       <Link to="/">Home</Link>
-      <Link to="/about-us">About</Link>
+      <Link to="/exchange">Exchange</Link>
+      <Link to="/rates">Rates</Link>
     </header>
 
     <main>
       <Route exact path="/" component={Home} />
-      <Route exact path="/about-us" component={About} />
+      <Route exact path="/exchange" component={Exchange} />
+      <Route exact path="/rates" component={Rates} />
     </main>
   </div>
 );
