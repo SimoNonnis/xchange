@@ -1,5 +1,5 @@
 import React from 'react';
-import { push } from 'connected-react-router';
+import { Link } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
@@ -30,7 +30,7 @@ const Home = props => (
     </p>
 
     <div>
-      <button onClick={() => props.exchangePage()}>Exchange</button>
+      <Link to="/exchange">Exchange</Link>
     </div>
   </div>
 );
@@ -47,8 +47,7 @@ const mapDispatchToProps = dispatch =>
       increment,
       incrementAsync,
       decrement,
-      decrementAsync,
-      exchangePage: () => push('/exchange')
+      decrementAsync
     },
     dispatch
   );
