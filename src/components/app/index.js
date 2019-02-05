@@ -6,7 +6,7 @@ import Exchange from '../Pages/Exchange';
 import Rates from '../Pages/Rates';
 
 const App = () => (
-  <div>
+  <div className="app-container">
     <header>
       <Link to="/">Home</Link>
       <Link to="/exchange">Exchange</Link>

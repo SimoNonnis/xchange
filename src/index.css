@@ -1,3 +1,9 @@
+/* Variables */
+:root {
+  --main-background-color: white;
+  --app-background-color: lightblue;
+}
+
 html {
   font-size: 100%;
 }
@@ -9,6 +15,19 @@ body {
     sans-serif;
   font-size: 1rem;
   line-height: 1.5;
+  background-color: var(--main-background-color);
+}
+
+html,
+body {
+  height: 100vh;
+}
+
+.app-container {
+  max-width: 600px;
+  text-align: center;
+  margin: auto;
+  background-color: var(--app-background-color);
 }
 
 button:disabled {
