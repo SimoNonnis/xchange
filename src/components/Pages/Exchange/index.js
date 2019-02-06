@@ -11,7 +11,9 @@ const Exchange = () => (
         <BackIcon className="icon" />
       </Link>
       <Link to="/rates">Rates</Link>
-      <ExchangeIcon className="icon icon-exchange" />
+      <button>
+        <ExchangeIcon className="icon icon-exchange" />
+      </button>
     </nav>
     <h1>Exchange Page</h1>
   </div>

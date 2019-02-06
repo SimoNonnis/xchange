@@ -36,6 +36,20 @@ h1 {
   margin-top: 0;
 }
 
+button {
+  border: 0;
+  padding: 0;
+  background: none;
+  cursor: pointer;
+  appearance: none;
+  color: var(--text-color);
+}
+
+a:focus,
+button:focus {
+  outline: 1px dotted var(--text-color);
+}
+
 a,
 a:focus,
 a:hover,
