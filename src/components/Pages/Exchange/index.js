@@ -8,10 +8,10 @@ const Exchange = () => (
   <div>
     <header>
       <Link to="/">
-        <BackIcon />
+        <BackIcon className="icon" />
       </Link>
       <Link to="/rates">Rates</Link>
-      <ExchangeIcon />
+      <ExchangeIcon className="icon icon-exchange" />
     </header>
     <h1>Exchange Page</h1>
   </div>

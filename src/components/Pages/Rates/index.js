@@ -6,7 +6,7 @@ import { ReactComponent as BackIcon } from '../../../icons/left-arrow.svg';
 const Rates = () => (
   <div>
     <Link to="/exchange">
-      <BackIcon />
+      <BackIcon className="icon" />
     </Link>
     <h1>Rates Page</h1>
   </div>

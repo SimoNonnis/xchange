@@ -33,7 +33,7 @@ const Home = props => (
 
     <div>
       <Link to="/exchange">
-        <ExchangeIcon />
+        <ExchangeIcon className="icon icon-exchange" />
       </Link>
     </div>
   </div>

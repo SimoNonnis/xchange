@@ -3,9 +3,12 @@
 
 /* Variables */
 :root {
+  --min-height: 500px;
+
   --main-background-color: white;
-  --app-background-color: #03a9f4;
+  --app-background-color: #1f8bfb;
   --pink-color: #a358ea;
+  --text-color: white;
 }
 
 /* Base */
@@ -37,14 +40,28 @@ h1 {
   max-width: 600px;
   text-align: center;
   margin: auto;
+  min-height: var(--min-height);
   background-color: var(--app-background-color);
   background: linear-gradient(
     25deg,
     var(--pink-color),
+    var(--app-background-color),
     var(--app-background-color)
   );
 }
 
 button:disabled {
   opacity: 0.5;
+}
+
+.icon {
+  width: 40px;
+  fill: var(--text-color);
+}
+
+.icon-exchange {
+  background-color: var(--pink-color);
+  padding: 5px;
+  border-radius: 100%;
+  box-shadow: 0 0 2px var(--text-color);
 }
