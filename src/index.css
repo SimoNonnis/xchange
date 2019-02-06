@@ -50,9 +50,15 @@ button:focus {
   outline: 1px dotted var(--text-color);
 }
 
+a:active,
+button:active {
+  outline: none;
+}
+
 a,
 a:focus,
 a:hover,
+a:active,
 a:visited {
   text-decoration: none;
   color: var(--text-color);
