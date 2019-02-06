@@ -24,6 +24,7 @@ body {
   font-size: 1rem;
   line-height: 1.5;
   background-color: var(--main-background-color);
+  color: var(--text-color);
 }
 
 html,
@@ -64,6 +65,7 @@ button:disabled {
 
 .icon {
   width: 40px;
+  height: 40px;
   fill: var(--text-color);
 }
 
@@ -72,4 +74,10 @@ button:disabled {
   padding: 5px;
   border-radius: 100%;
   box-shadow: 0 0 2px var(--text-color);
+}
+
+.navigation {
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
 }

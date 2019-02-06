@@ -6,13 +6,13 @@ import { ReactComponent as ExchangeIcon } from '../../../icons/exchange.svg';
 
 const Exchange = () => (
   <div>
-    <header>
+    <nav className="navigation" role="navigation" aria-label="Main navigation">
       <Link to="/">
         <BackIcon className="icon" />
       </Link>
       <Link to="/rates">Rates</Link>
       <ExchangeIcon className="icon icon-exchange" />
-    </header>
+    </nav>
     <h1>Exchange Page</h1>
   </div>
 );
