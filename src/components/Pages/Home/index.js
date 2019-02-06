@@ -10,6 +10,8 @@ import {
   decrementAsync
 } from '../../../reducers/counter';
 
+import { ReactComponent as ExchangeIcon } from '../../../icons/exchange.svg';
+
 const Home = props => (
   <div>
     <h1>Pockets</h1>
@@ -30,7 +32,9 @@ const Home = props => (
     </p>
 
     <div>
-      <Link to="/exchange">Exchange</Link>
+      <Link to="/exchange">
+        <ExchangeIcon />
+      </Link>
     </div>
   </div>
 );

@@ -1,11 +1,14 @@
+/* Normalize css */
 @import '~sanitize.css';
 
 /* Variables */
 :root {
   --main-background-color: white;
-  --app-background-color: lightblue;
+  --app-background-color: #03a9f4;
+  --pink-color: #a358ea;
 }
 
+/* Base */
 html {
   font-size: 100%;
 }
@@ -29,11 +32,17 @@ h1 {
   margin-top: 0;
 }
 
+/* App */
 .app-container {
   max-width: 600px;
   text-align: center;
   margin: auto;
   background-color: var(--app-background-color);
+  background: linear-gradient(
+    25deg,
+    var(--pink-color),
+    var(--app-background-color)
+  );
 }
 
 button:disabled {
