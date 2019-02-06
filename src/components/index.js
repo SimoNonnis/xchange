@@ -1,9 +1,9 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
 
-import Home from '../Pages/Home';
-import Exchange from '../Pages/Exchange';
-import Rates from '../Pages/Rates';
+import Home from './Pages/Home';
+import Exchange from './Pages/Exchange';
+import Rates from './Pages/Rates';
 
 const App = () => (
   <div className="app-container">

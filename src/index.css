@@ -35,6 +35,14 @@ h1 {
   margin-top: 0;
 }
 
+a,
+a:focus,
+a:hover,
+a:visited {
+  text-decoration: none;
+  color: var(--text-color);
+}
+
 /* App */
 .app-container {
   max-width: 600px;
