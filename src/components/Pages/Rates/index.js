@@ -10,7 +10,7 @@ const Rates = () => (
         <BackIcon className="icon" />
       </Link>
     </nav>
-    <h1>Rates Page</h1>
+    <h1 className="pageTitle">Rates Page</h1>
   </div>
 );
 

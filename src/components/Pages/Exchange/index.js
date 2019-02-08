@@ -15,7 +15,7 @@ const Exchange = () => (
         <ExchangeIcon className="icon icon-exchange" />
       </button>
     </nav>
-    <h1>Exchange Page</h1>
+    <h1 className="pageTitle">Exchange Page</h1>
   </div>
 );
 

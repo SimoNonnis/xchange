@@ -14,7 +14,7 @@ import PocketButton from '../../PocketButton';
 
 const Home = ({ pockets }) => (
   <div>
-    <h1>Pockets</h1>
+    <h1 className="pageTitle">Pockets</h1>
     <div>
       {pockets.map(p => (
         <PocketButton
@@ -29,7 +29,7 @@ const Home = ({ pockets }) => (
       ))}
     </div>
 
-    <div>
+    <div className="u-topMargin">
       <Link to="/exchange">
         <ExchangeIcon className="icon icon-exchange" />
       </Link>

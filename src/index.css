@@ -9,6 +9,8 @@
   --app-background-color: #1f8bfb;
   --pink-color: #a358ea;
   --text-color: white;
+
+  --spaceBig: 50px;
 }
 
 /* Base */
@@ -32,10 +34,6 @@ body {
   height: 100vh;
 }
 
-h1 {
-  margin-top: 0;
-}
-
 button {
   border: 0;
   padding: 0;
@@ -46,7 +44,7 @@ button {
 }
 
 button:disabled {
-  opacity: 0.5;
+  cursor: not-allowed;
 }
 
 a:focus,
@@ -83,6 +81,10 @@ a:visited {
   );
 }
 
+.pageTitle {
+  margin: 0 0 var(--spaceBig) 0;
+}
+
 .icon {
   width: 40px;
   height: 40px;
@@ -106,4 +108,25 @@ a:visited {
   display: block;
   padding: 10px;
   margin: 5px auto;
+}
+
+.buttonPocketInfo {
+  margin-top: 20px;
+}
+
+.isSelectedPocket {
+  transform: scale(2);
+}
+
+/* Utils */
+.u-semiTransparent {
+  opacity: 0.5 !important;
+}
+
+.u-fontSizeSmall {
+  font-size: 0.8rem !important;
+}
+
+.u-topMargin {
+  margin-top: var(--spaceBig) !important;
 }
