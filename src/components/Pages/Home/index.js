@@ -9,27 +9,25 @@ import {
   decrement,
   decrementAsync
 } from '../../../reducers/sections/counter';
-
 import { ReactComponent as ExchangeIcon } from '../../../icons/exchange.svg';
+import PocketButton from '../../PocketButton';
 
-const Home = props => (
+const Home = ({ pockets }) => (
   <div>
     <h1>Pockets</h1>
-    <p>Count: {props.count}</p>
-
-    <p>
-      <button onClick={props.increment}>Increment</button>
-      <button onClick={props.incrementAsync} disabled={props.isIncrementing}>
-        Increment Async
-      </button>
-    </p>
-
-    <p>
-      <button onClick={props.decrement}>Decrement</button>
-      <button onClick={props.decrementAsync} disabled={props.isDecrementing}>
-        Decrement Async
-      </button>
-    </p>
+    <div>
+      {pockets.map(p => (
+        <PocketButton
+          key={p.code}
+          className="buttonPocket"
+          code={p.code}
+          name={p.name}
+          symbol={p.symbol}
+          amount={p.amount}
+          isSelected={p.isSelected}
+        />
+      ))}
+    </div>
 
     <div>
       <Link to="/exchange">
@@ -39,11 +37,8 @@ const Home = props => (
   </div>
 );
 
-const mapStateToProps = ({ pocket, counter }) => ({
-  pocket,
-  count: counter.count,
-  isIncrementing: counter.isIncrementing,
-  isDecrementing: counter.isDecrementing
+const mapStateToProps = ({ pockets }) => ({
+  pockets
 });
 
 const mapDispatchToProps = dispatch =>

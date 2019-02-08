@@ -45,6 +45,10 @@ button {
   color: var(--text-color);
 }
 
+button:disabled {
+  opacity: 0.5;
+}
+
 a:focus,
 button:focus {
   outline: 1px dotted var(--text-color);
@@ -79,10 +83,6 @@ a:visited {
   );
 }
 
-button:disabled {
-  opacity: 0.5;
-}
-
 .icon {
   width: 40px;
   height: 40px;
@@ -100,4 +100,10 @@ button:disabled {
   padding: 10px;
   display: flex;
   justify-content: space-between;
+}
+
+.buttonPocket {
+  display: block;
+  padding: 10px;
+  margin: 5px auto;
 }
