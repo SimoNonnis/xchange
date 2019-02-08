@@ -8,7 +8,7 @@ import {
   incrementAsync,
   decrement,
   decrementAsync
-} from '../../../reducers/counter';
+} from '../../../reducers/sections/counter';
 
 import { ReactComponent as ExchangeIcon } from '../../../icons/exchange.svg';
 
@@ -39,7 +39,8 @@ const Home = props => (
   </div>
 );
 
-const mapStateToProps = ({ counter }) => ({
+const mapStateToProps = ({ pocket, counter }) => ({
+  pocket,
   count: counter.count,
   isIncrementing: counter.isIncrementing,
   isDecrementing: counter.isDecrementing

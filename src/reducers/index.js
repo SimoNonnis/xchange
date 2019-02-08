@@ -1,6 +1,8 @@
 import { combineReducers } from 'redux';
-import counter from './counter';
+
+import { pockets, counter } from './sections';
 
 export default combineReducers({
+  pockets,
   counter
 });
