@@ -20,7 +20,7 @@ const Home = ({ pockets, getRates }) => (
           amount={p.amount}
           isSelected={p.isSelected}
           isDisabled={p.isDisabled}
-          onClick={getRates}
+          onClick={() => getRates(p.code)}
         />
       ))}
     </div>
