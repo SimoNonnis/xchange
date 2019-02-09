@@ -1,4 +1,4 @@
 import pockets from './pockets';
-import counter from './counter';
+import rates from './rates';
 
-export { pockets, counter };
+export { pockets, rates };
