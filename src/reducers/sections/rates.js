@@ -24,13 +24,16 @@ export const getRates = code => {
     dispatch(getRatesStart(code));
     const { pockets } = store.getState();
 
-    console.log('pockets: ', filterCurrencyCodes(pockets));
+    console.log('Selected: ', filterCurrencyCodes(pockets, 'selected'));
+    console.log('Not selected: ', filterCurrencyCodes(pockets));
   };
 };
 
 // Utils
-export const filterCurrencyCodes = pockets =>
-  pockets.filter(p => !p.isSelected === true).map(p => p.code);
+export const filterCurrencyCodes = (pockets, selected) =>
+  pockets
+    .filter(p => (selected ? p.isSelected === true : !p.isSelected === true))
+    .map(p => p.code);
 
 // Reducer
 const initialState = {

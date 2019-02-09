@@ -33,11 +33,9 @@ const Home = ({ pockets, getRates }) => (
   </div>
 );
 
-const mapStateToProps = ({ pockets }) => ({
-  pockets
-});
-
 export default connect(
-  mapStateToProps,
+  ({ pockets }) => ({
+    pockets
+  }),
   { getRates }
 )(Home);
