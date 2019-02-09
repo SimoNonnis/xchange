@@ -1,18 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import {
-  increment,
-  incrementAsync,
-  decrement,
-  decrementAsync
-} from '../../../reducers/sections/counter';
+import { getRates } from '../../../reducers/sections/rates';
 import { ReactComponent as ExchangeIcon } from '../../../icons/exchange.svg';
 import PocketButton from '../../PocketButton';
 
-const Home = ({ pockets }) => (
+const Home = ({ pockets, getRates }) => (
   <div>
     <h1 className="pageTitle">Pockets</h1>
     <div>
@@ -25,6 +19,8 @@ const Home = ({ pockets }) => (
           symbol={p.symbol}
           amount={p.amount}
           isSelected={p.isSelected}
+          isDisabled={p.isDisabled}
+          onClick={getRates}
         />
       ))}
     </div>
@@ -41,18 +37,7 @@ const mapStateToProps = ({ pockets }) => ({
   pockets
 });
 
-const mapDispatchToProps = dispatch =>
-  bindActionCreators(
-    {
-      increment,
-      incrementAsync,
-      decrement,
-      decrementAsync
-    },
-    dispatch
-  );
-
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  { getRates }
 )(Home);

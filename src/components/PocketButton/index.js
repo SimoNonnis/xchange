@@ -6,15 +6,30 @@ const propTypes = {
   name: PropTypes.string.isRequired,
   symbol: PropTypes.string.isRequired,
   amount: PropTypes.number.isRequired,
-  isSelected: PropTypes.bool.isRequired
+  isSelected: PropTypes.bool.isRequired,
+  isDisabled: PropTypes.bool.isRequired,
+  onClick: PropTypes.func
 };
 
-const PocketButton = ({ code, name, symbol, amount, isSelected }) => (
+const defaultProps = {
+  onClick: () => undefined
+};
+
+const PocketButton = ({
+  code,
+  name,
+  symbol,
+  amount,
+  isSelected,
+  isDisabled,
+  onClick
+}) => (
   <button
     className={`buttonPocket u-fontSizeSmall ${
       isSelected ? '' : 'u-semiTransparent'
     }`}
-    disabled={isSelected}>
+    disabled={isSelected || isDisabled}
+    onClick={onClick}>
     <div className={`${isSelected ? 'isSelectedPocket' : ''}`}>
       <span>{symbol}</span>
       <span>{amount}</span>
@@ -28,5 +43,6 @@ const PocketButton = ({ code, name, symbol, amount, isSelected }) => (
 );
 
 PocketButton.propTypes = propTypes;
+PocketButton.defaultProps = defaultProps;
 
 export default PocketButton;

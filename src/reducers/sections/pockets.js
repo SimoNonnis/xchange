@@ -4,22 +4,32 @@ const initialState = [
     name: 'British Pound',
     symbol: '£',
     amount: 1000,
-    isSelected: false
+    isSelected: false,
+    isDisabled: true
   },
-  { code: 'EUR', name: 'Euro', symbol: '€', amount: 1500, isSelected: true },
+  {
+    code: 'EUR',
+    name: 'Euro',
+    symbol: '€',
+    amount: 1500,
+    isSelected: false,
+    isDisabled: false
+  },
   {
     code: 'USD',
     name: 'American Dollar',
     symbol: '$',
     amount: 2000,
-    isSelected: false
+    isSelected: false,
+    isDisabled: true
   },
   {
     code: 'RUB',
     name: 'Russian Ruble',
     symbol: '₽',
     amount: 2500,
-    isSelected: false
+    isSelected: true,
+    isDisabled: false
   }
 ];
 
