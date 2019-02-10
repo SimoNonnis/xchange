@@ -22,18 +22,19 @@ const getRatesFailed = () => ({
 export const getRates = code => {
   return (dispatch, getState) => {
     dispatch(getRatesStart(code));
-    const { pockets } = store.getState();
+    const { pockets, pocketSelection } = store.getState();
 
-    console.log('Selected: ', filterCurrencyCodes(pockets, 'selected'));
-    console.log('Not selected: ', filterCurrencyCodes(pockets));
+    console.log('pocketSelection.selected: ', pocketSelection.selected);
+    console.log(
+      'Not selected: ',
+      filterCurrencyCodes(pockets, pocketSelection.selected)
+    );
   };
 };
 
 // Utils
 export const filterCurrencyCodes = (pockets, selected) =>
-  pockets
-    .filter(p => (selected ? p.isSelected === true : !p.isSelected === true))
-    .map(p => p.code);
+  pockets.filter(p => !p.code === selected).map(p => p.code);
 
 // Reducer
 const initialState = {

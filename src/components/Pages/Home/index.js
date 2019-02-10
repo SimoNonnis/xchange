@@ -2,11 +2,14 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import { getRates } from '../../../reducers/sections/rates';
+import {
+  selectPocket,
+  selectedPocket
+} from '../../../reducers/sections/pocketSelection';
 import { ReactComponent as ExchangeIcon } from '../../../icons/exchange.svg';
 import PocketButton from '../../PocketButton';
 
-const Home = ({ pockets, getRates }) => (
+const Home = ({ pockets, selectPocket, selectedPocket }) => (
   <div>
     <h1 className="pageTitle">Pockets</h1>
     <div>
@@ -18,9 +21,9 @@ const Home = ({ pockets, getRates }) => (
           name={p.name}
           symbol={p.symbol}
           amount={p.amount}
-          isSelected={p.isSelected}
+          isSelected={p.code === selectedPocket}
           isDisabled={p.isDisabled}
-          onClick={() => getRates(p.code)}
+          onClick={() => selectPocket(p.code)}
         />
       ))}
     </div>
@@ -34,8 +37,9 @@ const Home = ({ pockets, getRates }) => (
 );
 
 export default connect(
-  ({ pockets }) => ({
-    pockets
+  state => ({
+    pockets: state.pockets,
+    selectedPocket: selectedPocket(state)
   }),
-  { getRates }
+  { selectPocket }
 )(Home);
