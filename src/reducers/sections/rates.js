@@ -5,9 +5,8 @@ export const GET_RATES_SUCCESS = 'rates/GET_RATES_SUCCESS';
 export const GET_RATES_FAILED = 'rates/GET_RATES_FAILED';
 
 // Action Creators
-const getRatesStart = code => ({
-  type: GET_RATES_START,
-  code
+const getRatesStart = () => ({
+  type: GET_RATES_START
 });
 
 const getRatesSuccess = rates => ({
@@ -19,9 +18,9 @@ const getRatesFailed = () => ({
   type: GET_RATES_FAILED
 });
 
-export const getRates = code => {
+export const getRates = () => {
   return (dispatch, getState) => {
-    dispatch(getRatesStart(code));
+    dispatch(getRatesStart());
     const { pockets, pocketSelection } = store.getState();
 
     console.log('pocketSelection.selected: ', pocketSelection.selected);
@@ -34,7 +33,7 @@ export const getRates = code => {
 
 // Utils
 export const filterCurrencyCodes = (pockets, selected) =>
-  pockets.filter(p => !p.code === selected).map(p => p.code);
+  pockets.filter(p => !(p.code === selected)).map(p => p.code);
 
 // Reducer
 const initialState = {
