@@ -11,6 +11,12 @@
   --text-color: white;
 
   --spaceBig: 50px;
+
+  --darkBlue: #0a6fd8;
+
+  --rates-red: 2;
+  --rates-green: 92;
+  --rates-blue: 185;
 }
 
 /* Base */
@@ -119,6 +125,28 @@ a:visited {
   transform: scale(2);
 }
 
+.rates-container {
+  border-top: 1px solid var(--darkBlue);
+  border-bottom: 1px solid var(--darkBlue);
+  background-color: rgba(
+    var(--rates-red),
+    var(--rates-green),
+    var(--rates-blue),
+    0.4
+  );
+}
+
+.rate + .rate {
+  border-top: 1px solid var(--darkBlue);
+}
+
+.rate {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+}
+
 /* Utils */
 .u-semiTransparent {
   opacity: 0.5 !important;
@@ -130,4 +158,8 @@ a:visited {
 
 .u-topMargin {
   margin-top: var(--spaceBig) !important;
+}
+
+.u-block {
+  display: block !important;
 }
