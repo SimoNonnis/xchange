@@ -147,6 +147,43 @@ a:visited {
   padding: 15px;
 }
 
+.exchange-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background-color: rgba(
+    var(--rates-red),
+    var(--rates-green),
+    var(--rates-blue),
+    0.4
+  );
+}
+
+.move-to-button {
+  padding: 10px 15px;
+  background-color: rgba(
+    var(--rates-red),
+    var(--rates-green),
+    var(--rates-blue),
+    0.7
+  );
+  display: block;
+  margin: 0 auto 10px;
+}
+
+.change-pocket {
+  padding: 10px 15px;
+  border: 1px solid var(--text-color);
+  border-radius: 4px;
+  background-color: rgba(
+    var(--rates-red),
+    var(--rates-green),
+    var(--rates-blue),
+    0.2
+  );
+}
+
 /* Utils */
 .u-semiTransparent {
   opacity: 0.5 !important;

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import { selectedPocket } from '../../../reducers/sections/pocketSelection';
-import { selectdRates } from '../../../reducers/sections/rates';
+import { selectedRates } from '../../../reducers/sections/rates';
 import { ReactComponent as BackIcon } from '../../../icons/left-arrow.svg';
 import Rate from '../../Rate';
 
@@ -24,6 +24,6 @@ const Rates = ({ rates, selected }) => (
 );
 
 export default connect(state => ({
-  rates: selectdRates(state),
+  rates: [], //selectedRates(state),
   selected: selectedPocket(state)
 }))(Rates);

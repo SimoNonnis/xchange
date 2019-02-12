@@ -1,5 +1,6 @@
 import axios from 'axios';
 import store from '../../store';
+import { filterCurrencyCodes } from '../../utils';
 // Actions
 export const GET_RATES_START = 'rates/GET_RATES_START';
 export const GET_RATES_SUCCESS = 'rates/GET_RATES_SUCCESS';
@@ -33,7 +34,7 @@ export const getRates = () => {
     const { pockets, pocketSelection } = store.getState();
     const symbols = filterCurrencyCodes(pockets, pocketSelection.selected);
 
-    return getRatesRequest(API_KEY, symbols).then(
+    return getRatesRequest(API_KEY, symbols.toString()).then(
       ({ data }) =>
         dispatch(data.success ? getRatesSuccess(data) : getRatesFailed()),
       error => dispatch(getRatesFailed())
@@ -41,15 +42,8 @@ export const getRates = () => {
   };
 };
 
-// Utils
-export const filterCurrencyCodes = (pockets, selected) =>
-  pockets
-    .filter(p => !(p.code === selected))
-    .map(p => p.code)
-    .toString();
-
 // Selector
-export const selectdRates = state => state.rates.rates;
+export const selectedRates = state => state.rates.rates;
 
 // Reducer
 const initialState = {

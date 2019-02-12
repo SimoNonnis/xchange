@@ -20,6 +20,7 @@ export const resetMoveTo = () => ({
 
 // Selector
 export const selectedPocket = state => state.pocketSelection.selected;
+export const selectedMoveTo = state => state.pocketSelection.moveTo;
 
 const initialState = { selected: 'RUB', moveTo: undefined };
 
