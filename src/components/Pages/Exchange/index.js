@@ -48,6 +48,21 @@ class Exchange extends Component {
     this.props.getRates();
   }
 
+  componentDidUpdate(prevProps) {
+    const { selectedMoveTo, rates } = this.props;
+
+    if (prevProps.selectedMoveTo !== selectedMoveTo) {
+      const amountExchanged = calculateExchange(
+        this.state.amountToMove,
+        rates[selectedMoveTo]
+      );
+
+      this.setState({
+        amountExchanged
+      });
+    }
+  }
+
   setAmountToMove = ({ target }) => {
     const amount = target.value;
     const { selectedMoveTo, rates } = this.props;
