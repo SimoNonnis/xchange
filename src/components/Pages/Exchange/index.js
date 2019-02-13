@@ -20,11 +20,22 @@ import { ReactComponent as ExchangeIcon } from '../../../icons/exchange.svg';
 import MoveToButton from '../../MoveToButton';
 
 class Exchange extends Component {
+  state = {
+    amountToMove: ''
+  };
+
   componentDidMount() {
     this.props.getRates();
   }
 
+  setAmountToMove = ({ target }) => {
+    this.setState({
+      amountToMove: target.value
+    });
+  };
+
   render() {
+    const { amountToMove } = this.state;
     const {
       selected,
       pocketsInfo,
@@ -73,6 +84,8 @@ class Exchange extends Component {
                 autoComplete="nope"
                 autoFocus
                 placeholder={0}
+                value={amountToMove}
+                onChange={this.setAmountToMove}
               />
             </div>
           </div>
