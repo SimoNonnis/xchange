@@ -8,6 +8,7 @@ export const GET_RATES_FAILED = 'rates/GET_RATES_FAILED';
 
 // API_KEY
 const API_KEY = '37015a81ba829dbc3fcb3ad2545a2241';
+
 // Action Creators
 const getRatesStart = () => ({
   type: GET_RATES_START
@@ -31,8 +32,9 @@ const getRatesRequest = (api_key, symbols) =>
 export const getRates = () => {
   return (dispatch, getState) => {
     dispatch(getRatesStart());
+
     const { pockets, pocketSelection } = store.getState();
-    const symbols = filterCurrencyCodes(pockets, pocketSelection.selected);
+    const symbols = filterCurrencyCodes(pockets.list, pocketSelection.selected);
 
     return getRatesRequest(API_KEY, symbols.toString()).then(
       ({ data }) =>

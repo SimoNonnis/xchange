@@ -1,2 +1,2 @@
-export const filterCurrencyCodes = (pockets, selected) =>
-  pockets.filter(p => !(p.code === selected)).map(p => p.code);
+export const filterCurrencyCodes = (pocketsList, selected) =>
+  pocketsList.filter(code => !(code === selected));

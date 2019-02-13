@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import MoveToButton from '../../MoveToButton';
+import { selectPocketsList } from '../../../reducers/sections/pockets';
 import {
   selectedPocket,
   selectedMoveTo,
@@ -85,8 +86,8 @@ export default connect(
     selected: selectedPocket(state),
     selectedMoveTo: selectedMoveTo(state),
     exchangeToPockets: filterCurrencyCodes(
-      state.pockets,
-      state.pocketSelection.selected
+      selectPocketsList(state),
+      selectedPocket(state)
     )
   }),
   { getRates, selectMoveTo, resetMoveTo }
