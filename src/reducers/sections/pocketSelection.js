@@ -18,7 +18,7 @@ export const resetMoveTo = () => ({
   type: RESET_MOVE_TO
 });
 
-// Selector
+// Selectors
 export const selectedPocket = state => state.pocketSelection.selected;
 export const selectedMoveTo = state => state.pocketSelection.moveTo;
 

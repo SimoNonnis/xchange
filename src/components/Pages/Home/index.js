@@ -3,27 +3,40 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import {
+  selectPocketsList,
+  selectPocketsInfo,
+  selectPocketsIsDisabled
+} from '../../../reducers/sections/pockets';
+import { selectPocketsAmount } from '../../../reducers/sections/pocketsAmount';
+import {
   selectPocket,
   selectedPocket
 } from '../../../reducers/sections/pocketSelection';
 import { ReactComponent as ExchangeIcon } from '../../../icons/exchange.svg';
 import PocketButton from '../../PocketButton';
 
-const Home = ({ pockets, selectPocket, selectedPocket }) => (
+const Home = ({
+  pocketsList,
+  pocketsInfo,
+  pocketsIsDisabled,
+  pocketsAmount,
+  selectedPocket,
+  selectPocket
+}) => (
   <div>
     <h1 className="pageTitle">Pockets</h1>
     <div>
-      {pockets.map(p => (
+      {pocketsList.map(p => (
         <PocketButton
-          key={p.code}
+          key={pocketsInfo[p].code}
           className="buttonPocket"
-          code={p.code}
-          name={p.name}
-          symbol={p.symbol}
-          amount={p.amount}
-          isSelected={p.code === selectedPocket}
-          isDisabled={p.isDisabled}
-          onClick={() => selectPocket(p.code)}
+          code={pocketsInfo[p].code}
+          name={pocketsInfo[p].name}
+          symbol={pocketsInfo[p].symbol}
+          amount={pocketsAmount[p].amount}
+          isSelected={p === selectedPocket}
+          isDisabled={pocketsIsDisabled[p].isDisabled}
+          onClick={() => selectPocket(pocketsInfo[p].code)}
         />
       ))}
     </div>
@@ -35,10 +48,12 @@ const Home = ({ pockets, selectPocket, selectedPocket }) => (
     </div>
   </div>
 );
-
 export default connect(
   state => ({
-    pockets: state.pockets,
+    pocketsList: selectPocketsList(state),
+    pocketsInfo: selectPocketsInfo(state),
+    pocketsIsDisabled: selectPocketsIsDisabled(state),
+    pocketsAmount: selectPocketsAmount(state),
     selectedPocket: selectedPocket(state)
   }),
   { selectPocket }

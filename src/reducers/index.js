@@ -1,9 +1,10 @@
 import { combineReducers } from 'redux';
 
-import { pockets, pocketSelection, rates } from './sections';
+import { pockets, pocketsAmount, pocketSelection, rates } from './sections';
 
 export default combineReducers({
   pockets,
+  pocketsAmount,
   pocketSelection,
   rates
 });
