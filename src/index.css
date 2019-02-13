@@ -160,6 +160,15 @@ a:visited {
   );
 }
 
+.amount-input {
+  background-color: transparent;
+  border: none;
+  color: inherit;
+  font-family: inherit;
+  padding: 10px;
+  margin-left: 5px;
+}
+
 .move-to-button {
   padding: 10px 15px;
   background-color: rgba(
@@ -199,4 +208,18 @@ a:visited {
 
 .u-block {
   display: block !important;
+}
+
+.u-inlineBlock {
+  display: inline-block !important;
+}
+
+.u-hiddenVisually {
+  border: 0 !important;
+  clip: rect(1px, 1px, 1px, 1px) !important;
+  height: 1px !important;
+  overflow: hidden !important;
+  padding: 0 !important;
+  position: absolute !important;
+  width: 1px !important;
 }

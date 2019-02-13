@@ -61,7 +61,20 @@ class Exchange extends Component {
                 {pocketsAmount[selected].amount}
               </span>
             </div>
-            <div>Input here</div>
+            <div>
+              <label className="u-hiddenVisually" htmlFor="amount">
+                Amount to transfer from
+              </label>
+              {'−'}
+              <input
+                className="amount-input u-inlineBlock"
+                type="number"
+                id="amount"
+                autoComplete="nope"
+                autoFocus
+                placeHolder={0.0}
+              />
+            </div>
           </div>
 
           {selectedMoveTo ? (
