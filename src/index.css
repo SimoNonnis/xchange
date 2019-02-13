@@ -160,6 +160,15 @@ a:visited {
   );
 }
 
+.exchange-box--dark {
+  background-color: rgba(
+    var(--rates-red),
+    var(--rates-green),
+    var(--rates-blue),
+    0.7
+  );
+}
+
 .amount-input {
   background-color: transparent;
   border: none;

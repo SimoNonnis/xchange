@@ -4,7 +4,11 @@ import PropTypes from 'prop-types';
 const propTypes = {
   selectedCode: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
-  amount: PropTypes.number.isRequired
+  amount: PropTypes.number
+};
+
+const defaultProps = {
+  amount: 0
 };
 
 const Rate = ({ selectedCode, name, amount }) => (
@@ -18,5 +22,6 @@ const Rate = ({ selectedCode, name, amount }) => (
 );
 
 Rate.propTypes = propTypes;
+Rate.defaultProps = defaultProps;
 
 export default Rate;

@@ -56,7 +56,7 @@ class Exchange extends Component {
           <div className="exchange-box">
             <div>
               <span className="u-block">{selected}</span>
-              <span className="u-block u-fontSizeSmall">
+              <span className="u-block u-fontSizeSmall u-semiTransparent">
                 You have {pocketsInfo[selected].symbol}{' '}
                 {pocketsAmount[selected].amount}
               </span>
@@ -72,13 +72,14 @@ class Exchange extends Component {
                 id="amount"
                 autoComplete="nope"
                 autoFocus
-                placeHolder={0.0}
+                placeholder={0}
               />
             </div>
           </div>
 
           {selectedMoveTo ? (
             <div>
+              <div className="exchange-box exchange-box--dark">Hello</div>
               <button
                 className="change-pocket u-topMargin"
                 onClick={resetMoveTo}>
