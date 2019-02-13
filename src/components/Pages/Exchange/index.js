@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import {
@@ -20,6 +21,24 @@ import { ReactComponent as ExchangeIcon } from '../../../icons/exchange.svg';
 import MoveToButton from '../../MoveToButton';
 
 class Exchange extends Component {
+  static propTypes = {
+    pocketsInfo: PropTypes.object.isRequired,
+    pocketsAmount: PropTypes.object.isRequired,
+    selected: PropTypes.string.isRequired,
+    rates: PropTypes.object.isRequired,
+    selectedMoveTo: PropTypes.string,
+    exchangeToPockets: PropTypes.array.isRequired,
+    getRates: PropTypes.func,
+    selectMoveTo: PropTypes.func,
+    resetMoveTo: PropTypes.func
+  };
+
+  static defaultProps = {
+    getRates: () => undefined,
+    selectMoveTo: () => undefined,
+    resetMoveTo: () => undefined
+  };
+
   state = {
     amountToMove: '',
     amountExchanged: ''

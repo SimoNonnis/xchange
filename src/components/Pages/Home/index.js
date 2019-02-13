@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import {
@@ -14,6 +15,18 @@ import {
 } from '../../../reducers/sections/pocketSelection';
 import { ReactComponent as ExchangeIcon } from '../../../icons/exchange.svg';
 import PocketButton from '../../PocketButton';
+
+const propTypes = {
+  pocketsList: PropTypes.array.isRequired,
+  pocketsInfo: PropTypes.object.isRequired,
+  pocketsIsDisabled: PropTypes.object.isRequired,
+  pocketsAmount: PropTypes.object.isRequired,
+  selectPocket: PropTypes.func
+};
+
+const defaultProps = {
+  selectPocket: () => undefined
+};
 
 const Home = ({
   pocketsList,
@@ -48,6 +61,10 @@ const Home = ({
     </div>
   </div>
 );
+
+Home.propTypes = propTypes;
+Home.defaultProps = defaultProps;
+
 export default connect(
   state => ({
     pocketsList: selectPocketsList(state),
