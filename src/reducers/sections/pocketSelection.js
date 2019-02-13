@@ -22,7 +22,7 @@ export const resetMoveTo = () => ({
 export const selectedPocket = state => state.pocketSelection.selected;
 export const selectedMoveTo = state => state.pocketSelection.moveTo;
 
-const initialState = { selected: 'RUB', moveTo: undefined };
+const initialState = { selected: 'EUR', moveTo: undefined };
 
 export default (state = initialState, action) => {
   switch (action.type) {
