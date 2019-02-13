@@ -44,7 +44,7 @@ export const getRates = () => {
   };
 };
 
-// Selector
+// Selectors
 export const selectedRates = state => state.rates.rates;
 
 // Reducer
