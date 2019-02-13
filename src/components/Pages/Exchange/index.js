@@ -138,6 +138,7 @@ class Exchange extends Component {
                 autoComplete="nope"
                 autoFocus
                 placeholder={0}
+                min="0"
                 value={amountToMove}
                 onChange={this.setAmountToMove}
               />
