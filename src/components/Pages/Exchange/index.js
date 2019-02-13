@@ -13,15 +13,16 @@ import {
   selectMoveTo,
   resetMoveTo
 } from '../../../reducers/sections/pocketSelection';
-import { getRates } from '../../../reducers/sections/rates';
-import { filterCurrencyCodes } from '../../../utils';
+import { getRates, selectedRates } from '../../../reducers/sections/rates';
+import { filterCurrencyCodes, calculateExchange } from '../../../utils';
 import { ReactComponent as BackIcon } from '../../../icons/left-arrow.svg';
 import { ReactComponent as ExchangeIcon } from '../../../icons/exchange.svg';
 import MoveToButton from '../../MoveToButton';
 
 class Exchange extends Component {
   state = {
-    amountToMove: ''
+    amountToMove: '',
+    amountExchanged: ''
   };
 
   componentDidMount() {
@@ -29,16 +30,28 @@ class Exchange extends Component {
   }
 
   setAmountToMove = ({ target }) => {
-    this.setState({
-      amountToMove: target.value
-    });
+    const amount = target.value;
+    const { selectedMoveTo, rates } = this.props;
+
+    if (selectedMoveTo) {
+      const amountExchanged = calculateExchange(amount, rates[selectedMoveTo]);
+
+      this.setState({
+        amountToMove: amount,
+        amountExchanged
+      });
+    } else {
+      this.setState({
+        amountToMove: amount
+      });
+    }
   };
 
   disableExchange = () =>
     !this.state.amountToMove || this.props.selectedMoveTo === undefined;
 
   render() {
-    const { amountToMove } = this.state;
+    const { amountToMove, amountExchanged } = this.state;
     const {
       selected,
       pocketsInfo,
@@ -107,7 +120,7 @@ class Exchange extends Component {
                     {pocketsAmount[selectedMoveTo].amount}
                   </span>
                 </div>
-                <div>Amount</div>
+                <div>{amountExchanged ? `+ ${amountExchanged}` : ''}</div>
               </div>
               <button
                 className="change-pocket u-topMargin"
@@ -138,6 +151,7 @@ export default connect(
     pocketsInfo: selectPocketsInfo(state),
     pocketsAmount: selectPocketsAmount(state),
     selected: selectedPocket(state),
+    rates: selectedRates(state),
     selectedMoveTo: selectedMoveTo(state),
     exchangeToPockets: filterCurrencyCodes(
       selectPocketsList(state),
