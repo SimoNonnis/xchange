@@ -2,8 +2,11 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import MoveToButton from '../../MoveToButton';
-import { selectPocketsList } from '../../../reducers/sections/pockets';
+import {
+  selectPocketsList,
+  selectPocketsInfo
+} from '../../../reducers/sections/pockets';
+import { selectPocketsAmount } from '../../../reducers/sections/pocketsAmount';
 import {
   selectedPocket,
   selectedMoveTo,
@@ -14,6 +17,7 @@ import { getRates } from '../../../reducers/sections/rates';
 import { filterCurrencyCodes } from '../../../utils';
 import { ReactComponent as BackIcon } from '../../../icons/left-arrow.svg';
 import { ReactComponent as ExchangeIcon } from '../../../icons/exchange.svg';
+import MoveToButton from '../../MoveToButton';
 
 class Exchange extends Component {
   componentDidMount() {
@@ -23,6 +27,8 @@ class Exchange extends Component {
   render() {
     const {
       selected,
+      pocketsInfo,
+      pocketsAmount,
       selectedMoveTo,
       exchangeToPockets,
       selectMoveTo,
@@ -50,7 +56,10 @@ class Exchange extends Component {
           <div className="exchange-box">
             <div>
               <span className="u-block">{selected}</span>
-              <span className="u-block u-fontSizeSmall">You have zzz</span>
+              <span className="u-block u-fontSizeSmall">
+                You have {pocketsInfo[selected].symbol}{' '}
+                {pocketsAmount[selected].amount}
+              </span>
             </div>
             <div>Input here</div>
           </div>
@@ -83,6 +92,8 @@ class Exchange extends Component {
 
 export default connect(
   state => ({
+    pocketsInfo: selectPocketsInfo(state),
+    pocketsAmount: selectPocketsAmount(state),
     selected: selectedPocket(state),
     selectedMoveTo: selectedMoveTo(state),
     exchangeToPockets: filterCurrencyCodes(
