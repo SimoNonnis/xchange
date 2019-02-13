@@ -64,7 +64,7 @@ class Exchange extends Component {
   }
 
   setAmountToMove = ({ target }) => {
-    const amount = target.value;
+    const amount = Number(target.value).toFixed(2);
     const { selectedMoveTo, rates } = this.props;
 
     if (selectedMoveTo) {
