@@ -34,6 +34,9 @@ class Exchange extends Component {
     });
   };
 
+  disableExchange = () =>
+    !this.state.amountToMove || this.props.selectedMoveTo === undefined;
+
   render() {
     const { amountToMove } = this.state;
     const {
@@ -56,8 +59,12 @@ class Exchange extends Component {
             <BackIcon className="icon" />
           </Link>
           <Link to="/rates">Rates</Link>
-          <button>
-            <ExchangeIcon className="icon icon-exchange" />
+          <button disabled={this.disableExchange()}>
+            <ExchangeIcon
+              className={`icon icon-exchange  ${
+                this.disableExchange() ? 'icon-exchange--disabled' : ''
+              }`}
+            />
           </button>
         </nav>
 

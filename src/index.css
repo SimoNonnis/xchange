@@ -102,6 +102,11 @@ a:visited {
   padding: 5px;
   border-radius: 100%;
   box-shadow: 0 0 2px var(--text-color);
+  transition: opacity 0.3s ease;
+}
+
+.icon-exchange--disabled {
+  opacity: 0.8;
 }
 
 .navigation {
