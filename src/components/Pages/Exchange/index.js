@@ -79,7 +79,16 @@ class Exchange extends Component {
 
           {selectedMoveTo ? (
             <div>
-              <div className="exchange-box exchange-box--dark">Hello</div>
+              <div className="exchange-box exchange-box--dark">
+                <div>
+                  <span className="u-block">{selectedMoveTo}</span>
+                  <span className="u-block u-fontSizeSmall u-semiTransparent">
+                    You have {pocketsInfo[selectedMoveTo].symbol}{' '}
+                    {pocketsAmount[selectedMoveTo].amount}
+                  </span>
+                </div>
+                <div>Amount</div>
+              </div>
               <button
                 className="change-pocket u-topMargin"
                 onClick={resetMoveTo}>
