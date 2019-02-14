@@ -133,7 +133,7 @@ class Exchange extends Component {
         <div>
           <div className="exchange-box">
             <div>
-              <span className="u-block">{selected}</span>
+              <span className="u-block u-textLeft">{selected}</span>
               <span className="u-block u-fontSizeSmall u-semiTransparent">
                 You have {pocketsInfo[selected].symbol}{' '}
                 {pocketsAmount[selected].amount}
@@ -168,7 +168,7 @@ class Exchange extends Component {
             <div>
               <div className="exchange-box exchange-box--dark">
                 <div>
-                  <span className="u-block">{selectedMoveTo}</span>
+                  <span className="u-block u-textLeft">{selectedMoveTo}</span>
                   <span className="u-block u-fontSizeSmall u-semiTransparent">
                     You have {pocketsInfo[selectedMoveTo].symbol}{' '}
                     {pocketsAmount[selectedMoveTo].amount}

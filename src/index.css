@@ -249,3 +249,7 @@ a:visited {
 .u-positionRelative {
   position: relative !important;
 }
+
+.u-textLeft {
+  text-align: left !important;
+}
