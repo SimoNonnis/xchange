@@ -90,6 +90,10 @@ class Exchange extends Component {
     const { addToPocket, selectedMoveTo } = this.props;
 
     addToPocket(selectedMoveTo, Number(this.state.amountExchanged));
+    this.setState({
+      amountToMove: '',
+      amountExchanged: ''
+    });
   };
 
   disableExchange = () =>
