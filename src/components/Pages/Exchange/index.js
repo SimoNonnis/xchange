@@ -144,7 +144,10 @@ class Exchange extends Component {
                 Amount to transfer from
               </label>
 
-              <div className="amount-input-container">
+              <div
+                className={`u-positionRelative ${
+                  amountToMove.length ? 'amount-input-container' : ''
+                }`}>
                 <input
                   className="amount-input u-inlineBlock"
                   type="number"

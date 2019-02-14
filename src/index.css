@@ -174,10 +174,6 @@ a:visited {
   );
 }
 
-.amount-input-container {
-  position: relative;
-}
-
 .amount-input-container:before {
   content: '−';
   position: absolute;
@@ -249,4 +245,8 @@ a:visited {
   padding: 0 !important;
   position: absolute !important;
   width: 1px !important;
+}
+
+.u-positionRelative {
+  position: relative !important;
 }
