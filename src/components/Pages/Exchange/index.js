@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { isEmpty } from 'lodash';
 
 import {
   selectPocketsList,
@@ -53,7 +54,9 @@ class Exchange extends Component {
   };
 
   componentDidMount() {
-    this.props.getRates();
+    const { rates, getRates } = this.props;
+
+    if (isEmpty(rates)) getRates();
   }
 
   componentDidUpdate(prevProps) {
