@@ -3,6 +3,16 @@ const EUR = 'EUR';
 const USD = 'USD';
 const RUB = 'RUB';
 
+// Actions
+const ADD_TO_POCKET = 'pocketAmount/ADD_TO_POCKET';
+
+// Action Creators
+export const addToPocket = (pocket, amount) => ({
+  type: ADD_TO_POCKET,
+  pocket,
+  amount
+});
+
 // Selectors
 export const selectPocketsAmount = state => state.pocketsAmount;
 
@@ -22,5 +32,15 @@ const initialState = {
 };
 
 export default (state = initialState, action) => {
-  return state;
+  switch (action.type) {
+    case ADD_TO_POCKET:
+      return {
+        ...state,
+        [action.pocket]: {
+          amount: state.amount + action.amount
+        }
+      };
+    default:
+      return state;
+  }
 };

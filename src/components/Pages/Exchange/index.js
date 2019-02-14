@@ -7,7 +7,10 @@ import {
   selectPocketsList,
   selectPocketsInfo
 } from '../../../reducers/sections/pockets';
-import { selectPocketsAmount } from '../../../reducers/sections/pocketsAmount';
+import {
+  selectPocketsAmount,
+  addToPocket
+} from '../../../reducers/sections/pocketsAmount';
 import {
   selectedPocket,
   selectedMoveTo,
@@ -30,13 +33,15 @@ class Exchange extends Component {
     exchangeToPockets: PropTypes.array.isRequired,
     getRates: PropTypes.func,
     selectMoveTo: PropTypes.func,
-    resetMoveTo: PropTypes.func
+    resetMoveTo: PropTypes.func,
+    addToPocket: PropTypes.func
   };
 
   static defaultProps = {
     getRates: () => undefined,
     selectMoveTo: () => undefined,
-    resetMoveTo: () => undefined
+    resetMoveTo: () => undefined,
+    addToPocket: () => undefined
   };
 
   state = {
@@ -81,6 +86,12 @@ class Exchange extends Component {
     }
   };
 
+  handleAddToPocket = () => {
+    const { addToPocket, selectedMoveTo } = this.props;
+
+    addToPocket(selectedMoveTo, Number(this.state.amountExchanged));
+  };
+
   disableExchange = () =>
     !this.state.amountToMove || this.props.selectedMoveTo === undefined;
 
@@ -106,7 +117,9 @@ class Exchange extends Component {
             <BackIcon className="icon" />
           </Link>
           <Link to="/rates">Rates</Link>
-          <button disabled={this.disableExchange()}>
+          <button
+            disabled={this.disableExchange()}
+            onClick={this.handleAddToPocket}>
             <ExchangeIcon
               className={`icon icon-exchange  ${
                 this.disableExchange() ? 'icon-exchange--disabled' : ''
@@ -193,5 +206,5 @@ export default connect(
       selectedPocket(state)
     )
   }),
-  { getRates, selectMoveTo, resetMoveTo }
+  { getRates, selectMoveTo, resetMoveTo, addToPocket }
 )(Exchange);

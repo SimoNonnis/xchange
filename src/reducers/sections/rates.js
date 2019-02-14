@@ -1,13 +1,14 @@
 import axios from 'axios';
 import store from '../../store';
 import { filterCurrencyCodes } from '../../utils';
+
+// API_KEY
+const API_KEY = '37015a81ba829dbc3fcb3ad2545a2241';
+
 // Actions
 export const GET_RATES_START = 'rates/GET_RATES_START';
 export const GET_RATES_SUCCESS = 'rates/GET_RATES_SUCCESS';
 export const GET_RATES_FAILED = 'rates/GET_RATES_FAILED';
-
-// API_KEY
-const API_KEY = '37015a81ba829dbc3fcb3ad2545a2241';
 
 // Action Creators
 const getRatesStart = () => ({
