@@ -4,6 +4,7 @@ import { filterCurrencyCodes } from '../../utils';
 
 // API_KEY
 const API_KEY = '37015a81ba829dbc3fcb3ad2545a2241';
+const REFRESH_TIME = 10000;
 
 // Actions
 export const GET_RATES_START = 'rates/GET_RATES_START';
@@ -25,10 +26,16 @@ const getRatesFailed = () => ({
   type: GET_RATES_FAILED
 });
 
-const getRatesRequest = (api_key, symbols) =>
-  axios.get(
-    `http://data.fixer.io/api/latest?access_key=${api_key}&symbols=${symbols}`
-  );
+const getRatesRequest = (api_key, symbols, dispatch) =>
+  axios
+    .get(
+      `http://data.fixer.io/api/latest?access_key=${api_key}&symbols=${symbols}`
+    )
+    .then(
+      ({ data }) =>
+        dispatch(data.success ? getRatesSuccess(data) : getRatesFailed()),
+      error => dispatch(getRatesFailed())
+    );
 
 export const getRates = () => {
   return (dispatch, getState) => {
@@ -37,11 +44,12 @@ export const getRates = () => {
     const { pockets, pocketSelection } = store.getState();
     const symbols = filterCurrencyCodes(pockets.list, pocketSelection.selected);
 
-    return getRatesRequest(API_KEY, symbols.toString()).then(
-      ({ data }) =>
-        dispatch(data.success ? getRatesSuccess(data) : getRatesFailed()),
-      error => dispatch(getRatesFailed())
-    );
+    getRatesRequest(API_KEY, symbols.toString(), dispatch);
+
+    // setInterval(
+    //   () => getRatesRequest(API_KEY, symbols.toString(), dispatch),
+    //   REFRESH_TIME
+    // );
   };
 };
 
