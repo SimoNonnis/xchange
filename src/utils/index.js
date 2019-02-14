@@ -4,5 +4,8 @@ export const filterCurrencyCodes = (pocketsList, selected) =>
 export const calculateExchange = (amount, rate) =>
   parseFloat(amount * rate).toFixed(2);
 
-export const updatePocketAmount = (pocketAmount, amountToAdd) =>
+export const incrementPocketAmount = (pocketAmount, amountToAdd) =>
   Number(parseFloat(pocketAmount + amountToAdd).toFixed(2));
+
+export const decrementPocketAmount = (pocketAmount, amountToMove) =>
+  Number(parseFloat(pocketAmount - amountToMove).toFixed(2));

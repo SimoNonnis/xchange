@@ -1,4 +1,4 @@
-import { updatePocketAmount } from '../../utils';
+import { incrementPocketAmount, decrementPocketAmount } from '../../utils';
 
 const GBP = 'GBP';
 const EUR = 'EUR';
@@ -7,10 +7,17 @@ const RUB = 'RUB';
 
 // Actions
 const ADD_TO_POCKET = 'pocketAmount/ADD_TO_POCKET';
+const REMOVE_FROM_POCKET = 'pocketAmount/REMOVE_FROM_POCKET';
 
 // Action Creators
 export const addToPocket = (pocket, amount) => ({
   type: ADD_TO_POCKET,
+  pocket,
+  amount
+});
+
+export const removeFromPocket = (pocket, amount) => ({
+  type: REMOVE_FROM_POCKET,
   pocket,
   amount
 });
@@ -39,7 +46,20 @@ export default (state = initialState, action) => {
       return {
         ...state,
         [action.pocket]: {
-          amount: updatePocketAmount(state[action.pocket].amount, action.amount)
+          amount: incrementPocketAmount(
+            state[action.pocket].amount,
+            action.amount
+          )
+        }
+      };
+    case REMOVE_FROM_POCKET:
+      return {
+        ...state,
+        [action.pocket]: {
+          amount: decrementPocketAmount(
+            state[action.pocket].amount,
+            action.amount
+          )
         }
       };
     default:

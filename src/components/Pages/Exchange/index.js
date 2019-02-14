@@ -9,7 +9,8 @@ import {
 } from '../../../reducers/sections/pockets';
 import {
   selectPocketsAmount,
-  addToPocket
+  addToPocket,
+  removeFromPocket
 } from '../../../reducers/sections/pocketsAmount';
 import {
   selectedPocket,
@@ -34,14 +35,16 @@ class Exchange extends Component {
     getRates: PropTypes.func,
     selectMoveTo: PropTypes.func,
     resetMoveTo: PropTypes.func,
-    addToPocket: PropTypes.func
+    addToPocket: PropTypes.func,
+    removeFromPocket: PropTypes.func
   };
 
   static defaultProps = {
     getRates: () => undefined,
     selectMoveTo: () => undefined,
     resetMoveTo: () => undefined,
-    addToPocket: () => undefined
+    addToPocket: () => undefined,
+    removeFromPocket: () => undefined
   };
 
   state = {
@@ -87,9 +90,15 @@ class Exchange extends Component {
   };
 
   handleAddToPocket = () => {
-    const { addToPocket, selectedMoveTo } = this.props;
+    const {
+      addToPocket,
+      removeFromPocket,
+      selectedMoveTo,
+      selected
+    } = this.props;
 
     addToPocket(selectedMoveTo, Number(this.state.amountExchanged));
+    removeFromPocket(selected, Number(this.state.amountToMove));
     this.setState({
       amountToMove: '',
       amountExchanged: ''
@@ -216,5 +225,5 @@ export default connect(
       selectedPocket(state)
     )
   }),
-  { getRates, selectMoveTo, resetMoveTo, addToPocket }
+  { getRates, selectMoveTo, resetMoveTo, addToPocket, removeFromPocket }
 )(Exchange);

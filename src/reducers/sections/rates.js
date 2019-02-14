@@ -46,7 +46,7 @@ export const getRates = () => {
 
     getRatesRequest(API_KEY, symbols.toString(), dispatch);
 
-    // setInterval(
+    // const poolGetRates = setInterval(
     //   () => getRatesRequest(API_KEY, symbols.toString(), dispatch),
     //   REFRESH_TIME
     // );
