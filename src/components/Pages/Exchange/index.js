@@ -154,6 +154,7 @@ class Exchange extends Component {
                 min="0"
                 value={amountToMove}
                 onChange={this.setAmountToMove}
+                style={{ width: `${amountToMove.length + 5}ch` }}
               />
             </div>
           </div>
