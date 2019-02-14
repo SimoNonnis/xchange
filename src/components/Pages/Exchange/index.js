@@ -143,19 +143,21 @@ class Exchange extends Component {
               <label className="u-hiddenVisually" htmlFor="amount">
                 Amount to transfer from
               </label>
-              {'−'}
-              <input
-                className="amount-input u-inlineBlock"
-                type="number"
-                id="amount"
-                autoComplete="nope"
-                autoFocus
-                placeholder={0}
-                min="0"
-                value={amountToMove}
-                onChange={this.setAmountToMove}
-                style={{ width: `${amountToMove.length + 5}ch` }}
-              />
+
+              <div className="amount-input-container">
+                <input
+                  className="amount-input u-inlineBlock"
+                  type="number"
+                  id="amount"
+                  autoComplete="nope"
+                  autoFocus
+                  placeholder={0}
+                  min="0"
+                  value={amountToMove}
+                  onChange={this.setAmountToMove}
+                  style={{ width: `${amountToMove.length + 5}ch` }}
+                />
+              </div>
             </div>
           </div>
 
