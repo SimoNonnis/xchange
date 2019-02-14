@@ -37,7 +37,7 @@ export default (state = initialState, action) => {
       return {
         ...state,
         [action.pocket]: {
-          amount: state.amount + action.amount
+          amount: state[action.pocket].amount + action.amount
         }
       };
     default:
