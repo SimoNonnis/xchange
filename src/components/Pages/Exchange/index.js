@@ -130,15 +130,6 @@ class Exchange extends Component {
             <BackIcon className="icon" />
           </Link>
           <Link to="/rates">Rates</Link>
-          <button
-            disabled={this.disableExchange()}
-            onClick={this.handleAddToPocket}>
-            <ExchangeIcon
-              className={`icon icon-exchange  ${
-                this.disableExchange() ? 'icon-exchange--disabled' : ''
-              }`}
-            />
-          </button>
         </nav>
 
         <h1 className="pageTitle">Exchange Page</h1>
@@ -189,11 +180,23 @@ class Exchange extends Component {
                 </div>
                 <div>{amountExchanged ? `+ ${amountExchanged}` : ''}</div>
               </div>
-              <button
-                className="change-pocket u-topMargin"
-                onClick={resetMoveTo}>
-                Change pocket
-              </button>
+              <div className="controls-container">
+                <button
+                  className="u-inlineBlock u-topMargin"
+                  disabled={this.disableExchange()}
+                  onClick={this.handleAddToPocket}>
+                  <ExchangeIcon
+                    className={`icon icon--big icon-exchange  ${
+                      this.disableExchange() ? 'icon-exchange--disabled' : ''
+                    }`}
+                  />
+                </button>
+                <button
+                  className="change-pocket u-topMargin u-inlineBlock"
+                  onClick={resetMoveTo}>
+                  Change pocket
+                </button>
+              </div>
             </div>
           ) : (
             <div>

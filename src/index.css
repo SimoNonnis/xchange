@@ -75,6 +75,7 @@ a:visited {
 /* App */
 .app-container {
   max-width: 600px;
+  padding-bottom: var(--spaceBig);
   text-align: center;
   margin: auto;
   min-height: var(--min-height);
@@ -95,6 +96,11 @@ a:visited {
   width: 40px;
   height: 40px;
   fill: var(--text-color);
+}
+
+.icon--big {
+  width: 60px;
+  height: 60px;
 }
 
 .icon-exchange {
@@ -203,9 +209,15 @@ a:visited {
   margin: 0 auto 10px;
 }
 
+.controls-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .change-pocket {
-  padding: 10px 15px;
-  border: 1px solid var(--text-color);
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--text-color);
   border-radius: 4px;
   background-color: rgba(
     var(--rates-red),
