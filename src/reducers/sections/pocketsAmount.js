@@ -1,3 +1,5 @@
+import { updatePocketAmount } from '../../utils';
+
 const GBP = 'GBP';
 const EUR = 'EUR';
 const USD = 'USD';
@@ -37,7 +39,7 @@ export default (state = initialState, action) => {
       return {
         ...state,
         [action.pocket]: {
-          amount: state[action.pocket].amount + action.amount
+          amount: updatePocketAmount(state[action.pocket].amount, action.amount)
         }
       };
     default:
