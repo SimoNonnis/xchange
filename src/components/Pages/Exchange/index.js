@@ -54,9 +54,16 @@ class Exchange extends Component {
   };
 
   componentDidMount() {
-    const { rates, getRates } = this.props;
+    const {
+      selected,
+      selectedMoveTo,
+      resetMoveTo,
+      rates,
+      getRates
+    } = this.props;
 
     if (isEmpty(rates)) getRates();
+    if (selected === selectedMoveTo) resetMoveTo();
   }
 
   componentDidUpdate(prevProps) {

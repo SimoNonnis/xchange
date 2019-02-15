@@ -43,7 +43,7 @@ const initialState = {
       isDisabled: true
     },
     [RUB]: {
-      isDisabled: true
+      isDisabled: false
     }
   }
 };
