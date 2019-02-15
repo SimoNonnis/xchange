@@ -26,10 +26,10 @@ const getRatesFailed = () => ({
   type: GET_RATES_FAILED
 });
 
-const getRatesRequest = (api_key, symbols, dispatch) =>
+const getRatesRequest = (api_key, base, symbols, dispatch) =>
   axios
     .get(
-      `http://data.fixer.io/api/latest?access_key=${api_key}&symbols=${symbols}`
+      `http://data.fixer.io/api/latest?access_key=${api_key}&base=${base}&symbols=${symbols}`
     )
     .then(
       ({ data }) =>
@@ -44,10 +44,21 @@ export const getRates = () => {
     const { pockets, pocketSelection } = store.getState();
     const symbols = filterCurrencyCodes(pockets.list, pocketSelection.selected);
 
-    getRatesRequest(API_KEY, symbols.toString(), dispatch);
+    getRatesRequest(
+      API_KEY,
+      pocketSelection.selected,
+      symbols.toString(),
+      dispatch
+    );
 
     return setInterval(
-      () => getRatesRequest(API_KEY, symbols.toString(), dispatch),
+      () =>
+        getRatesRequest(
+          API_KEY,
+          pocketSelection.selected,
+          symbols.toString(),
+          dispatch
+        ),
       REFRESH_TIME
     );
   };
