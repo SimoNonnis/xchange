@@ -5,8 +5,7 @@ import { connect } from 'react-redux';
 
 import {
   selectPocketsList,
-  selectPocketsInfo,
-  selectPocketsIsDisabled
+  selectPocketsInfo
 } from '../../../reducers/sections/pockets';
 import { selectPocketsAmount } from '../../../reducers/sections/pocketsAmount';
 import {
@@ -19,7 +18,6 @@ import PocketButton from '../../PocketButton';
 const propTypes = {
   pocketsList: PropTypes.array.isRequired,
   pocketsInfo: PropTypes.object.isRequired,
-  pocketsIsDisabled: PropTypes.object.isRequired,
   pocketsAmount: PropTypes.object.isRequired,
   selectPocket: PropTypes.func
 };
@@ -31,7 +29,6 @@ const defaultProps = {
 const Home = ({
   pocketsList,
   pocketsInfo,
-  pocketsIsDisabled,
   pocketsAmount,
   selectedPocket,
   selectPocket
@@ -48,7 +45,6 @@ const Home = ({
           symbol={pocketsInfo[p].symbol}
           amount={pocketsAmount[p].amount}
           isSelected={p === selectedPocket}
-          isDisabled={pocketsIsDisabled[p].isDisabled}
           onClick={() => selectPocket(pocketsInfo[p].code)}
         />
       ))}
@@ -69,7 +65,6 @@ export default connect(
   state => ({
     pocketsList: selectPocketsList(state),
     pocketsInfo: selectPocketsInfo(state),
-    pocketsIsDisabled: selectPocketsIsDisabled(state),
     pocketsAmount: selectPocketsAmount(state),
     selectedPocket: selectedPocket(state)
   }),

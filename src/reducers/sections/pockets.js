@@ -6,7 +6,6 @@ const RUB = 'RUB';
 // Selectors
 export const selectPocketsList = state => state.pockets.list;
 export const selectPocketsInfo = state => state.pockets.info;
-export const selectPocketsIsDisabled = state => state.pockets.isDisabled;
 
 const initialState = {
   list: [GBP, EUR, USD, RUB],
@@ -30,20 +29,6 @@ const initialState = {
       code: RUB,
       name: 'Russian Ruble',
       symbol: '₽'
-    }
-  },
-  isDisabled: {
-    [GBP]: {
-      isDisabled: true
-    },
-    [EUR]: {
-      isDisabled: false
-    },
-    [USD]: {
-      isDisabled: true
-    },
-    [RUB]: {
-      isDisabled: false
     }
   }
 };
