@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { isEmpty } from 'lodash';
 
 import {
   selectPocketsList,
@@ -19,7 +18,7 @@ import {
   selectMoveTo,
   resetMoveTo
 } from '../../../reducers/sections/pocketSelection';
-import { getRates, selectedRates } from '../../../reducers/sections/rates';
+import { selectedRates } from '../../../reducers/sections/rates';
 import { filterCurrencyCodes, calculateExchange } from '../../../utils';
 import { ReactComponent as BackIcon } from '../../../icons/left-arrow.svg';
 import { ReactComponent as ExchangeIcon } from '../../../icons/exchange.svg';
@@ -33,7 +32,6 @@ class Exchange extends Component {
     rates: PropTypes.object.isRequired,
     selectedMoveTo: PropTypes.string,
     exchangeToPockets: PropTypes.array.isRequired,
-    getRates: PropTypes.func,
     selectMoveTo: PropTypes.func,
     resetMoveTo: PropTypes.func,
     addToPocket: PropTypes.func,
@@ -41,7 +39,6 @@ class Exchange extends Component {
   };
 
   static defaultProps = {
-    getRates: () => undefined,
     selectMoveTo: () => undefined,
     resetMoveTo: () => undefined,
     addToPocket: () => undefined,
@@ -54,15 +51,8 @@ class Exchange extends Component {
   };
 
   componentDidMount() {
-    const {
-      selected,
-      selectedMoveTo,
-      resetMoveTo,
-      rates,
-      getRates
-    } = this.props;
+    const { selected, selectedMoveTo, resetMoveTo } = this.props;
 
-    if (isEmpty(rates)) getRates();
     if (selected === selectedMoveTo) resetMoveTo();
   }
 
@@ -238,5 +228,5 @@ export default connect(
       selectedPocket(state)
     )
   }),
-  { getRates, selectMoveTo, resetMoveTo, addToPocket, removeFromPocket }
+  { selectMoveTo, resetMoveTo, addToPocket, removeFromPocket }
 )(Exchange);

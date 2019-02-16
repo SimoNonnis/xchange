@@ -12,6 +12,8 @@ import {
   selectPocket,
   selectedPocket
 } from '../../../reducers/sections/pocketSelection';
+import { getRates } from '../../../reducers/sections/rates';
+
 import { ReactComponent as ExchangeIcon } from '../../../icons/exchange.svg';
 import PocketButton from '../../PocketButton';
 
@@ -19,11 +21,13 @@ const propTypes = {
   pocketsList: PropTypes.array.isRequired,
   pocketsInfo: PropTypes.object.isRequired,
   pocketsAmount: PropTypes.object.isRequired,
-  selectPocket: PropTypes.func
+  selectPocket: PropTypes.func,
+  getRates: PropTypes.func
 };
 
 const defaultProps = {
-  selectPocket: () => undefined
+  selectPocket: () => undefined,
+  getRates: () => undefined
 };
 
 const Home = ({
@@ -31,7 +35,8 @@ const Home = ({
   pocketsInfo,
   pocketsAmount,
   selectedPocket,
-  selectPocket
+  selectPocket,
+  getRates
 }) => (
   <div>
     <h1 className="pageTitle">Pockets</h1>
@@ -45,15 +50,22 @@ const Home = ({
           symbol={pocketsInfo[p].symbol}
           amount={pocketsAmount[p].amount}
           isSelected={p === selectedPocket}
-          onClick={() => selectPocket(pocketsInfo[p].code)}
+          onClick={() => {
+            selectPocket(pocketsInfo[p].code);
+            getRates();
+          }}
         />
       ))}
     </div>
 
     <div className="u-topMargin">
-      <Link to="/exchange">
-        <ExchangeIcon className="icon icon-exchange" />
-      </Link>
+      {selectedPocket ? (
+        <Link to="/exchange">
+          <ExchangeIcon className="icon icon-exchange" />
+        </Link>
+      ) : (
+        <span>Select your pocket ↑</span>
+      )}
     </div>
   </div>
 );
@@ -68,5 +80,5 @@ export default connect(
     pocketsAmount: selectPocketsAmount(state),
     selectedPocket: selectedPocket(state)
   }),
-  { selectPocket }
+  { selectPocket, getRates }
 )(Home);
