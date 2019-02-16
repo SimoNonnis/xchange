@@ -12,7 +12,11 @@ import {
   selectPocket,
   selectedPocket
 } from '../../../reducers/sections/pocketSelection';
-import { getRates } from '../../../reducers/sections/rates';
+import {
+  selectIsPolling,
+  getRates,
+  pollingStop
+} from '../../../reducers/sections/rates';
 
 import { ReactComponent as ExchangeIcon } from '../../../icons/exchange.svg';
 import PocketButton from '../../PocketButton';
@@ -21,13 +25,16 @@ const propTypes = {
   pocketsList: PropTypes.array.isRequired,
   pocketsInfo: PropTypes.object.isRequired,
   pocketsAmount: PropTypes.object.isRequired,
+  isPolling: PropTypes.bool.isRequired,
   selectPocket: PropTypes.func,
-  getRates: PropTypes.func
+  getRates: PropTypes.func,
+  pollingStop: PropTypes.func
 };
 
 const defaultProps = {
   selectPocket: () => undefined,
-  getRates: () => undefined
+  getRates: () => undefined,
+  pollingStop: () => undefined
 };
 
 const Home = ({
@@ -36,7 +43,9 @@ const Home = ({
   pocketsAmount,
   selectedPocket,
   selectPocket,
-  getRates
+  isPolling,
+  getRates,
+  pollingStop
 }) => (
   <div>
     <h1 className="pageTitle">Pockets</h1>
@@ -51,8 +60,13 @@ const Home = ({
           amount={pocketsAmount[p].amount}
           isSelected={p === selectedPocket}
           onClick={() => {
-            selectPocket(pocketsInfo[p].code);
-            getRates();
+            const code = pocketsInfo[p].code;
+
+            selectPocket(code);
+
+            if (isPolling) pollingStop();
+
+            getRates(pocketsList, code);
           }}
         />
       ))}
@@ -78,7 +92,8 @@ export default connect(
     pocketsList: selectPocketsList(state),
     pocketsInfo: selectPocketsInfo(state),
     pocketsAmount: selectPocketsAmount(state),
-    selectedPocket: selectedPocket(state)
+    selectedPocket: selectedPocket(state),
+    isPolling: selectIsPolling(state)
   }),
-  { selectPocket, getRates }
+  { selectPocket, getRates, pollingStop }
 )(Home);
