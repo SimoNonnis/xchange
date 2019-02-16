@@ -1,5 +1,6 @@
-import axios from 'axios';
-import store from '../../store';
+import { ajax } from 'rxjs/ajax';
+import { ofType } from 'redux-observable';
+import { mergeMap, map } from 'rxjs/operators';
 import { filterCurrencyCodes } from '../../utils';
 
 // API_KEY
@@ -10,10 +11,13 @@ const REFRESH_TIME = 10000;
 export const GET_RATES_START = 'rates/GET_RATES_START';
 export const GET_RATES_SUCCESS = 'rates/GET_RATES_SUCCESS';
 export const GET_RATES_FAILED = 'rates/GET_RATES_FAILED';
+export const POLLING_STOP = 'rates/POLLING_STOP';
 
 // Action Creators
-const getRatesStart = () => ({
-  type: GET_RATES_START
+export const getRates = (pocketsList, selectedPocket) => ({
+  type: GET_RATES_START,
+  selectedPocket,
+  symbols: filterCurrencyCodes(pocketsList, selectedPocket)
 });
 
 const getRatesSuccess = ({ base, rates }) => ({
@@ -26,50 +30,38 @@ const getRatesFailed = () => ({
   type: GET_RATES_FAILED
 });
 
-const getRatesRequest = (api_key, base, symbols, dispatch) =>
-  axios
-    .get(
-      `http://data.fixer.io/api/latest?access_key=${api_key}&base=${base}&symbols=${symbols}`
+export const pollingStop = () => ({
+  type: POLLING_STOP
+});
+
+// START TODO
+
+export const getRatesEpic = action$ =>
+  action$.pipe(
+    ofType(GET_RATES_START),
+    mergeMap(action =>
+      ajax
+        .getJSON(
+          `http://data.fixer.io/api/latest?access_key=${API_KEY}&base=${
+            action.selectedPocket
+          }&symbols=${action.symbols}`
+        )
+        .pipe(
+          map(data => (data.success ? getRatesSuccess(data) : getRatesFailed()))
+        )
     )
-    .then(
-      ({ data }) =>
-        dispatch(data.success ? getRatesSuccess(data) : getRatesFailed()),
-      error => dispatch(getRatesFailed())
-    );
+  );
 
-export const getRates = () => {
-  return (dispatch, getState) => {
-    dispatch(getRatesStart());
-
-    const { pockets, pocketSelection } = store.getState();
-    const symbols = filterCurrencyCodes(pockets.list, pocketSelection.selected);
-
-    getRatesRequest(
-      API_KEY,
-      pocketSelection.selected,
-      symbols.toString(),
-      dispatch
-    );
-
-    return setInterval(
-      () =>
-        getRatesRequest(
-          API_KEY,
-          pocketSelection.selected,
-          symbols.toString(),
-          dispatch
-        ),
-      REFRESH_TIME
-    );
-  };
-};
+// END TODO
 
 // Selectors
 export const selectedRates = state => state.rates.rates;
+export const selectIsPolling = state => state.rates.isPolling;
 
 // Reducer
 const initialState = {
   isLoading: false,
+  isPolling: false,
   base: undefined,
   rates: {}
 };
@@ -79,17 +71,28 @@ export default (state = initialState, action) => {
     case GET_RATES_START:
       return {
         ...state,
-        isLoading: true
+        isLoading: true,
+        isPolling: true
       };
+
     case GET_RATES_SUCCESS:
       return {
         ...state,
         isLoading: false,
+        isPolling: true,
         base: action.base,
         rates: action.rates
       };
+
     case GET_RATES_FAILED:
       return initialState;
+
+    case POLLING_STOP:
+      return {
+        ...state,
+        isPolling: false
+      };
+
     default:
       return state;
   }
