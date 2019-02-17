@@ -1,7 +1,7 @@
 import { timer } from 'rxjs';
 import { ajax } from 'rxjs/ajax';
 import { ofType } from 'redux-observable';
-import { mergeMap, map, takeUntil } from 'rxjs/operators';
+import { mergeMap, map, takeUntil, catchError } from 'rxjs/operators';
 import { filterCurrencyCodes } from '../../utils';
 
 // API_KEY
@@ -35,8 +35,6 @@ export const pollingStop = () => ({
   type: POLLING_STOP
 });
 
-// START TODO
-
 export const getRatesEpic = action$ =>
   action$.pipe(
     ofType(GET_RATES_START),
@@ -53,14 +51,13 @@ export const getRatesEpic = action$ =>
             .pipe(
               map(data =>
                 data.success ? getRatesSuccess(data) : getRatesFailed()
-              )
+              ),
+              catchError(() => getRatesFailed())
             )
         )
       )
     )
   );
-
-// END TODO
 
 // Selectors
 export const selectedRates = state => state.rates.rates;
