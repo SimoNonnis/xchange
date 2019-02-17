@@ -1,0 +1,47 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test <Rate /> should render with all props 1`] = `
+<div
+  className="rate"
+>
+  <span>
+    1 
+    RUB
+  </span>
+  <div>
+    <span
+      className="u-block"
+    >
+      1000
+    </span>
+    <span
+      className="u-block"
+    >
+      Euro
+    </span>
+  </div>
+</div>
+`;
+
+exports[`Test <Rate /> should render with required props 1`] = `
+<div
+  className="rate"
+>
+  <span>
+    1 
+    RUB
+  </span>
+  <div>
+    <span
+      className="u-block"
+    >
+      0
+    </span>
+    <span
+      className="u-block"
+    >
+      Euro
+    </span>
+  </div>
+</div>
+`;

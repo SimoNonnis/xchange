@@ -9,6 +9,7 @@
   "devDependencies": {
     "enzyme": "^3.9.0",
     "enzyme-adapter-react-16": "^1.9.1",
+    "enzyme-to-json": "^3.3.5",
     "prettier": "1.16.4",
     "react-scripts": "2.1.3"
   },
