@@ -41,18 +41,22 @@ export const getRatesEpic = action$ =>
   action$.pipe(
     ofType(GET_RATES_START),
     mergeMap(action =>
-      ajax
-        .getJSON(
-          `http://data.fixer.io/api/latest?access_key=${API_KEY}&base=${
-            action.selectedPocket
-          }&symbols=${action.symbols}`
+      timer(0, REFRESH_TIME).pipe(
+        takeUntil(action$.pipe(ofType(POLLING_STOP))),
+        mergeMap(() =>
+          ajax
+            .getJSON(
+              `http://data.fixer.io/api/latest?access_key=${API_KEY}&base=${
+                action.selectedPocket
+              }&symbols=${action.symbols}`
+            )
+            .pipe(
+              map(data =>
+                data.success ? getRatesSuccess(data) : getRatesFailed()
+              )
+            )
         )
-        .pipe(
-          map(data =>
-            data.success ? getRatesSuccess(data) : getRatesFailed()
-          ),
-          takeUntil(action$.pipe(ofType(POLLING_STOP)))
-        )
+      )
     )
   );
 
