@@ -25,19 +25,20 @@ const propTypes = {
   pocketsList: PropTypes.array.isRequired,
   pocketsInfo: PropTypes.object.isRequired,
   pocketsAmount: PropTypes.object.isRequired,
-  isPolling: PropTypes.bool.isRequired,
+  isPolling: PropTypes.bool,
   selectPocket: PropTypes.func,
   getRates: PropTypes.func,
   pollingStop: PropTypes.func
 };
 
 const defaultProps = {
+  isPolling: false,
   selectPocket: () => undefined,
   getRates: () => undefined,
   pollingStop: () => undefined
 };
 
-const Home = ({
+export const Home = ({
   pocketsList,
   pocketsInfo,
   pocketsAmount,

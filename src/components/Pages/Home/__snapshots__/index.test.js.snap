@@ -1,0 +1,119 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test <Home /> should call all action with isPolling = true 1`] = `
+<div>
+  <h1
+    className="pageTitle"
+  >
+    Pockets
+  </h1>
+  <div>
+    <PocketButton
+      amount={1000}
+      className="buttonPocket"
+      code="GBP"
+      isSelected={false}
+      key="GBP"
+      name="British Pound"
+      onClick={[Function]}
+      symbol="£"
+    />
+    <PocketButton
+      amount={1500}
+      className="buttonPocket"
+      code="EUR"
+      isSelected={false}
+      key="EUR"
+      name="Euro"
+      onClick={[Function]}
+      symbol="€"
+    />
+    <PocketButton
+      amount={2000}
+      className="buttonPocket"
+      code="USD"
+      isSelected={false}
+      key="USD"
+      name="American Dollar"
+      onClick={[Function]}
+      symbol="$"
+    />
+    <PocketButton
+      amount={2500}
+      className="buttonPocket"
+      code="RUB"
+      isSelected={false}
+      key="RUB"
+      name="Russian Ruble"
+      onClick={[Function]}
+      symbol="₽"
+    />
+  </div>
+  <div
+    className="u-topMargin"
+  >
+    <span>
+      Select your pocket ↑
+    </span>
+  </div>
+</div>
+`;
+
+exports[`Test <Home /> should render with required props 1`] = `
+<div>
+  <h1
+    className="pageTitle"
+  >
+    Pockets
+  </h1>
+  <div>
+    <PocketButton
+      amount={1000}
+      className="buttonPocket"
+      code="GBP"
+      isSelected={false}
+      key="GBP"
+      name="British Pound"
+      onClick={[Function]}
+      symbol="£"
+    />
+    <PocketButton
+      amount={1500}
+      className="buttonPocket"
+      code="EUR"
+      isSelected={false}
+      key="EUR"
+      name="Euro"
+      onClick={[Function]}
+      symbol="€"
+    />
+    <PocketButton
+      amount={2000}
+      className="buttonPocket"
+      code="USD"
+      isSelected={false}
+      key="USD"
+      name="American Dollar"
+      onClick={[Function]}
+      symbol="$"
+    />
+    <PocketButton
+      amount={2500}
+      className="buttonPocket"
+      code="RUB"
+      isSelected={false}
+      key="RUB"
+      name="Russian Ruble"
+      onClick={[Function]}
+      symbol="₽"
+    />
+  </div>
+  <div
+    className="u-topMargin"
+  >
+    <span>
+      Select your pocket ↑
+    </span>
+  </div>
+</div>
+`;
