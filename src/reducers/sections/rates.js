@@ -68,6 +68,7 @@ const initialState = {
   isLoading: false,
   isPolling: false,
   base: undefined,
+  error: undefined,
   rates: {}
 };
 
@@ -90,7 +91,12 @@ export default (state = initialState, action) => {
       };
 
     case GET_RATES_FAILED:
-      return initialState;
+      return {
+        ...state,
+        isLoading: false,
+        isPolling: true,
+        error: true
+      };
 
     case POLLING_STOP:
       return {
