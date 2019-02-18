@@ -1,0 +1,50 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test <PocketButton /> should render with required props and selected = false 1`] = `
+<button
+  className="buttonPocket u-fontSizeSmall u-semiTransparent"
+  disabled={false}
+  onClick={[Function]}
+>
+  <div
+    className=""
+  >
+    <span>
+      ₽
+    </span>
+    <span>
+      1000
+    </span>
+  </div>
+</button>
+`;
+
+exports[`Test <PocketButton /> should render with required props and selected = true 1`] = `
+<button
+  className="buttonPocket u-fontSizeSmall "
+  disabled={true}
+  onClick={[Function]}
+>
+  <div
+    className="isSelectedPocket"
+  >
+    <span>
+      ₽
+    </span>
+    <span>
+      1000
+    </span>
+  </div>
+  <div
+    className="buttonPocketInfo"
+  >
+    <span>
+      RUB
+    </span>
+     - 
+    <span>
+      Russian Ruble
+    </span>
+  </div>
+</button>
+`;
