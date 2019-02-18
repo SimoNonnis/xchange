@@ -1,4 +1,9 @@
-import { currenciesList, selected, rates as ratesResponse } from '../../mocks';
+import {
+  currenciesList,
+  selected,
+  rates as ratesResponse,
+  pocketsAmount as pocketsAmountMock
+} from '../../mocks';
 import pocketSelection, {
   SELECT_POCKET,
   SELECT_MOVE_TO,
@@ -10,6 +15,10 @@ import rates, {
   GET_RATES_FAILED,
   POLLING_STOP
 } from './rates';
+import pocketsAmount, {
+  ADD_TO_POCKET,
+  REMOVE_FROM_POCKET
+} from './pocketsAmount';
 
 describe('Test pocketSelection reducer', () => {
   it('should return the state if no valid action', () => {
@@ -129,6 +138,44 @@ describe('Test rates reducer', () => {
       isLoading: false,
       isPolling: false,
       rates: {}
+    });
+  });
+});
+
+describe('Test pocketsAmount reducer', () => {
+  it('should return the state if no valid action', () => {
+    expect(pocketsAmount(undefined, { type: 'FAKE_ACTION' })).toEqual(
+      pocketsAmountMock
+    );
+  });
+
+  it('should add amount if ADD_TO_POCKET action', () => {
+    expect(
+      pocketsAmount(undefined, {
+        type: ADD_TO_POCKET,
+        pocket: 'RUB',
+        amount: 100
+      })
+    ).toEqual({
+      EUR: { amount: 1500 },
+      GBP: { amount: 1000 },
+      RUB: { amount: 2600 },
+      USD: { amount: 2000 }
+    });
+  });
+
+  it('should add amount if REMOVE_FROM_POCKET action', () => {
+    expect(
+      pocketsAmount(undefined, {
+        type: REMOVE_FROM_POCKET,
+        pocket: 'RUB',
+        amount: 100
+      })
+    ).toEqual({
+      EUR: { amount: 1500 },
+      GBP: { amount: 1000 },
+      RUB: { amount: 2400 },
+      USD: { amount: 2000 }
     });
   });
 });

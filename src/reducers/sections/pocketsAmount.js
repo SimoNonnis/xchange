@@ -6,8 +6,8 @@ const USD = 'USD';
 const RUB = 'RUB';
 
 // Actions
-const ADD_TO_POCKET = 'pocketAmount/ADD_TO_POCKET';
-const REMOVE_FROM_POCKET = 'pocketAmount/REMOVE_FROM_POCKET';
+export const ADD_TO_POCKET = 'pocketAmount/ADD_TO_POCKET';
+export const REMOVE_FROM_POCKET = 'pocketAmount/REMOVE_FROM_POCKET';
 
 // Action Creators
 export const addToPocket = (pocket, amount) => ({
