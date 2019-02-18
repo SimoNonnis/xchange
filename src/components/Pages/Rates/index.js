@@ -20,7 +20,7 @@ const propTypes = {
   selected: PropTypes.string.isRequired
 };
 
-const Rates = ({ currenciesList, pocketsInfo, rates, selected }) => (
+export const Rates = ({ currenciesList, pocketsInfo, rates, selected }) => (
   <div>
     <nav className="navigation" role="navigation" aria-label="Main navigation">
       <Link to="/exchange">

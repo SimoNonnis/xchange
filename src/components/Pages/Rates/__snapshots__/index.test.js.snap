@@ -1,0 +1,47 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test <Rates /> should render with required props 1`] = `
+<div>
+  <nav
+    aria-label="Main navigation"
+    className="navigation"
+    role="navigation"
+  >
+    <Link
+      replace={false}
+      to="/exchange"
+    >
+      <ReactComponent
+        className="icon"
+      />
+    </Link>
+  </nav>
+  <h1
+    className="pageTitle"
+  >
+    Rates Page
+  </h1>
+  <div
+    className="rates-container"
+  >
+    <Rate
+      amount={1000}
+      key="GBP"
+      name="British Pound"
+      selectedCode="RUB"
+    />
+    <Rate
+      amount={2000}
+      key="EUR"
+      name="Euro"
+      selectedCode="RUB"
+    />
+    <Rate
+      amount={3000}
+      key="USD"
+      name="American Dollar"
+      selectedCode="RUB"
+    />
+  </div>
+</div>
+`;
